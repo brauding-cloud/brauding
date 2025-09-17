@@ -280,7 +280,7 @@ const Dashboard = () => {
             <h2 className="text-2xl font-bold text-slate-800">Заказы</h2>
             {user?.role === 'manager' && (
               <Link to="/orders/new">
-                <Button className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700">
+                <Button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700">
                   <Plus className="w-4 h-4 mr-2" />
                   Новый заказ
                 </Button>
