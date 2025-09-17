@@ -126,6 +126,22 @@ const Dashboard = () => {
     };
   };
 
+  const getShippingDetails = (order) => {
+    if (!order || !order.stages || !Array.isArray(order.stages)) {
+      return { shippedUnits: 0, totalQuantity: 0 };
+    }
+    
+    // Ищем этап "Отгрузка" (8й этап, индекс 7)
+    const shippingStage = order.stages.find(stage => 
+      stage && (stage.name === 'Отгрузка' || stage.stage_order === 8)
+    );
+    
+    return {
+      shippedUnits: shippingStage?.completed_units || 0,
+      totalQuantity: order.quantity || 0
+    };
+  };
+
   const calculateTotalCost = (order) => {
     if (!order || !order.quantity) return 0;
     
