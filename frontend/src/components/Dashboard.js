@@ -318,16 +318,17 @@ const Dashboard = () => {
                     
                     <div className="text-right">
                       <div className="mb-2">
-                        <div className="flex items-center justify-end gap-10 mb-1">
+                        <div className="flex items-center justify-end gap-8 mb-1">
                           {(() => {
                             const manufacturing = getManufacturingDetails(order);
                             return manufacturing.completedUnits > 0 ? (
                               <div className="text-sm text-slate-600 text-center">Изготовлено</div>
                             ) : null;
                           })()}
+                          <div className="text-sm text-slate-600 text-center">Отгружено</div>
                           <div className="text-sm text-slate-600 text-center">Прогресс</div>
                         </div>
-                        <div className="flex items-center justify-end gap-10">
+                        <div className="flex items-center justify-end gap-8">
                           {(() => {
                             const manufacturing = getManufacturingDetails(order);
                             return manufacturing.completedUnits > 0 ? (
@@ -336,6 +337,9 @@ const Dashboard = () => {
                               </div>
                             ) : null;
                           })()}
+                          <div className="text-3xl font-bold text-blue-600">
+                            {getShippingDetails(order).shippedUnits}
+                          </div>
                           <div className="text-3xl font-bold text-emerald-600">
                             {getOrderProgress(order)}%
                           </div>
