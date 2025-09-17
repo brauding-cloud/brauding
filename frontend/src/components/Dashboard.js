@@ -142,6 +142,32 @@ const Dashboard = () => {
     };
   };
 
+  const getReadyToShipDetails = (order) => {
+    if (!order || !order.stages || !Array.isArray(order.stages)) {
+      return { readyToShip: 0 };
+    }
+    
+    // Ищем этап "Упаковка" (7й этап, индекс 6)
+    const packagingStage = order.stages.find(stage => 
+      stage && (stage.name === 'Упаковка' || stage.stage_order === 7)
+    );
+    
+    // Ищем этап "Отгрузка" (8й этап, индекс 7)
+    const shippingStage = order.stages.find(stage => 
+      stage && (stage.name === 'Отгрузка' || stage.stage_order === 8)
+    );
+    
+    const packaged = packagingStage?.completed_units || 0;
+    const shipped = shippingStage?.completed_units || 0;
+    
+    // Готово к отгрузке = Упаковано - Отгружено
+    const readyToShip = Math.max(0, packaged - shipped);
+    
+    return {
+      readyToShip: readyToShip
+    };
+  };
+
   const calculateTotalCost = (order) => {
     if (!order || !order.quantity) return 0;
     
