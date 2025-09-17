@@ -350,7 +350,7 @@ const Dashboard = () => {
                             return manufacturing.completedUnits > 0 ? (
                               <div className="text-center w-24">
                                 <div className="text-sm text-slate-600 mb-1">Изготовлено</div>
-                                <div className="text-3xl font-bold text-emerald-600">
+                                <div className="text-3xl font-bold text-emerald-600 mb-4">
                                   {manufacturing.completedUnits}
                                 </div>
                               </div>
@@ -358,13 +358,13 @@ const Dashboard = () => {
                           })()}
                           <div className="text-center w-24">
                             <div className="text-sm text-slate-600 mb-1">Готово к отгрузке</div>
-                            <div className="text-3xl font-bold text-orange-600">
+                            <div className="text-3xl font-bold text-orange-600 mb-4">
                               {getReadyToShipDetails(order).readyToShip}
                             </div>
                           </div>
                           <div className="text-center w-24">
                             <div className="text-sm text-slate-600 mb-1">Прогресс</div>
-                            <div className="text-3xl font-bold text-emerald-600 mb-2">
+                            <div className="text-3xl font-bold text-emerald-600 mb-4">
                               {getOrderProgress(order)}%
                             </div>
                             <div className="text-sm text-slate-600 mb-1">Отгружено</div>
