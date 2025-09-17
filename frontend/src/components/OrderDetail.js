@@ -411,7 +411,10 @@ const OrderDetail = () => {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-slate-800" translate="no">Информация о заказе</h2>
                 <div className="flex items-center space-x-2">
-                  <Badge variant={order.market_type === 'domestic' ? 'default' : 'secondary'}>
+                  <Badge 
+                    variant={order.market_type === 'domestic' ? 'default' : 'secondary'}
+                    className={order.market_type === 'domestic' ? 'bg-blue-600 text-white border-blue-600' : ''}
+                  >
                     {order.market_type === 'domestic' ? 'Внутренний' : 'Зарубежный'}
                   </Badge>
                   {user?.role === 'manager' && !editingOrder && (
