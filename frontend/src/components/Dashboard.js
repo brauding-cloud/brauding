@@ -357,9 +357,9 @@ const Dashboard = () => {
                             ) : null;
                           })()}
                           <div className="text-center w-24">
-                            <div className="text-sm text-slate-600 mb-1">Отгружено</div>
-                            <div className="text-3xl font-bold text-blue-600">
-                              {getShippingDetails(order).shippedUnits}
+                            <div className="text-sm text-slate-600 mb-1">Готово к отгрузке</div>
+                            <div className="text-3xl font-bold text-orange-600">
+                              {getReadyToShipDetails(order).readyToShip}
                             </div>
                           </div>
                           <div className="text-center w-24">
@@ -367,9 +367,9 @@ const Dashboard = () => {
                             <div className="text-3xl font-bold text-emerald-600 mb-2">
                               {getOrderProgress(order)}%
                             </div>
-                            <div className="text-sm text-slate-600 mb-1">Готово к отгрузке</div>
-                            <div className="text-2xl font-bold text-orange-600">
-                              {getReadyToShipDetails(order).readyToShip}
+                            <div className="text-sm text-slate-600 mb-1">Отгружено</div>
+                            <div className="text-2xl font-bold text-blue-600">
+                              {getShippingDetails(order).shippedUnits}
                             </div>
                           </div>
                         </div>
