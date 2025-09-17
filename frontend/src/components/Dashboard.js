@@ -300,7 +300,7 @@ const Dashboard = () => {
                 </p>
                 {user?.role === 'manager' && (
                   <Link to="/orders/new">
-                    <Button>
+                    <Button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700">
                       <Plus className="w-4 h-4 mr-2" />
                       Создать заказ
                     </Button>
