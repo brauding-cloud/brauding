@@ -318,29 +318,29 @@ const Dashboard = () => {
                     
                     <div className="text-right">
                       <div className="mb-2">
-                        <div className="flex items-center justify-end mb-1">
+                        <div className="flex items-center justify-end mb-1 gap-4">
                           {(() => {
                             const manufacturing = getManufacturingDetails(order);
                             return manufacturing.completedUnits > 0 ? (
-                              <div className="text-sm text-slate-600 text-center w-20">Изготовлено</div>
+                              <div className="text-sm text-slate-600 text-center w-24">Изготовлено</div>
                             ) : null;
                           })()}
-                          <div className="text-sm text-slate-600 text-center w-20">Отгружено</div>
-                          <div className="text-sm text-slate-600 text-center w-20">Прогресс</div>
+                          <div className="text-sm text-slate-600 text-center w-24">Отгружено</div>
+                          <div className="text-sm text-slate-600 text-center w-24">Прогресс</div>
                         </div>
-                        <div className="flex items-center justify-end">
+                        <div className="flex items-center justify-end gap-4">
                           {(() => {
                             const manufacturing = getManufacturingDetails(order);
                             return manufacturing.completedUnits > 0 ? (
-                              <div className="text-3xl font-bold text-emerald-600 text-center w-20">
+                              <div className="text-3xl font-bold text-emerald-600 text-center w-24">
                                 {manufacturing.completedUnits}
                               </div>
                             ) : null;
                           })()}
-                          <div className="text-3xl font-bold text-blue-600 text-center w-20">
+                          <div className="text-3xl font-bold text-blue-600 text-center w-24">
                             {getShippingDetails(order).shippedUnits}
                           </div>
-                          <div className="text-3xl font-bold text-emerald-600 text-center w-20">
+                          <div className="text-3xl font-bold text-emerald-600 text-center w-24">
                             {getOrderProgress(order)}%
                           </div>
                         </div>
