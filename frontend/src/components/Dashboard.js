@@ -318,7 +318,7 @@ const Dashboard = () => {
                         </h3>
                         <Badge 
                           variant={order.market_type === 'domestic' ? 'default' : 'secondary'}
-                          className={order.market_type === 'domestic' ? 'bg-blue-100 text-blue-700 border-blue-200' : ''}
+                          className={order.market_type === 'domestic' ? 'bg-blue-600 text-white border-blue-600' : ''}
                         >
                           {order.market_type === 'domestic' ? 'Внутренний' : 'Зарубежный'}
                         </Badge>
