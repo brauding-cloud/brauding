@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест Калькулятора</title>
+</head>
+<body>
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+        <h1>VANILLA JS ТЕСТ КАЛЬКУЛЯТОРА</h1>
+        
+        <div style="background: red; color: white; padding: 10px; margin: 20px 0;">
+            <button onclick="testClick()" style="padding: 10px; font-size: 16px;">
+                ТЕСТ (кликов: <span id="clickCount">0</span>)
+            </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+            <div>
+                <label>Количество:</label><br>
+                <input type="number" id="quantity" value="1" onchange="updateCalculations()" style="width: 100%; padding: 8px;">
+            </div>
+            
+            <div>
+                <label>Стоимость материала:</label><br>
+                <input type="number" id="materialCost" value="0" onchange="updateCalculations()" style="width: 100%; padding: 8px;">
+            </div>
+            
+            <div>
+                <label>Время обработки (мин):</label><br>
+                <input type="number" id="processingTime" value="30" onchange="updateCalculations()" style="width: 100%; padding: 8px;">
+            </div>
+            
+            <div>
+                <label>Тип рынка:</label><br>
+                <select id="marketType" onchange="updateCalculations()" style="width: 100%; padding: 8px;">
+                    <option value="domestic">Внутренний (25₴/мин)</option>
+                    <option value="foreign">Зарубежный (0.42$/мин)</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="background: #f0f0f0; padding: 20px; border-radius: 8px;">
+            <h2>ОТЛАДКА ЗНАЧЕНИЙ:</h2>
+            <p><strong>quantity:</strong> <span id="debugQuantity">1</span></p>
+            <p><strong>materialCost:</strong> <span id="debugMaterialCost">0</span></p>
+            <p><strong>processingTime:</strong> <span id="debugProcessingTime">30</span></p>
+            <p><strong>marketType:</strong> <span id="debugMarketType">domestic</span></p>
+            
+            <hr>
+            
+            <h2>РАСЧЕТЫ:</h2>
+            <p><strong>Стоимость материала за деталь:</strong> <span id="materialPerUnit">0.00</span> ₴</p>
+            <p><strong>Стоимость обработки за деталь:</strong> <span id="processingPerUnit">750.00</span> ₴</p>
+            <p><strong>Общая стоимость за деталь:</strong> <span id="totalPerUnit">750.00</span> ₴</p>
+            <p><strong>Общая стоимость заказа:</strong> <span id="totalOrder">750.00</span> ₴</p>
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        
+        function testClick() {
+            clickCount++;
+            document.getElementById('clickCount').textContent = clickCount;
+            alert('Клик #' + clickCount);
+            console.log('VANILLA JS CLICK:', clickCount);
+        }
+        
+        function updateCalculations() {
+            console.log('VANILLA JS: updateCalculations called');
+            
+            // Получаем значения
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const materialCost = parseFloat(document.getElementById('materialCost').value) || 0;
+            const processingTime = parseFloat(document.getElementById('processingTime').value) || 0;
+            const marketType = document.getElementById('marketType').value;
+            
+            console.log('VALUES:', { quantity, materialCost, processingTime, marketType });
+            
+            // Обновляем отладку
+            document.getElementById('debugQuantity').textContent = quantity;
+            document.getElementById('debugMaterialCost').textContent = materialCost;
+            document.getElementById('debugProcessingTime').textContent = processingTime;
+            document.getElementById('debugMarketType').textContent = marketType;
+            
+            // Расчеты
+            const materialPerUnit = quantity > 0 ? materialCost / quantity : 0;
+            const rate = marketType === 'domestic' ? 25 : 0.42;
+            const processingPerUnit = processingTime * rate;
+            const totalPerUnit = materialPerUnit + processingPerUnit;
+            const totalOrder = materialCost + (quantity * processingTime * rate);
+            
+            // Обновляем расчеты
+            document.getElementById('materialPerUnit').textContent = materialPerUnit.toFixed(2);
+            document.getElementById('processingPerUnit').textContent = processingPerUnit.toFixed(2);
+            document.getElementById('totalPerUnit').textContent = totalPerUnit.toFixed(2);
+            document.getElementById('totalOrder').textContent = totalOrder.toFixed(2);
+            
+            console.log('CALCULATIONS:', { materialPerUnit, processingPerUnit, totalPerUnit, totalOrder });
+        }
+        
+        // Инициализация при загрузке
+        updateCalculations();
+    </script>
+</body>
+</html>
